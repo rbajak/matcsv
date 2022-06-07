@@ -21,16 +21,15 @@ csvs = glob.glob('.\dane\*')
 dict = GetCityName(csvs)
 
 while True:
-    print("Select city:")
+    print("Wybierz miasto:")
     for key, value in dict.items() :
         print ("  " + key)
     city = input("> ")
     if city in dict:
         break
     else:
-        print("Such city " + city + "does not exist")
+        print("Takie miasto jak " + city + " nie istnieje. Spróbuj jeszcze raz.")
 
-# city = 'lodz'
 columns = ["N", "M", "D", "H", "DBT"]
 df = pd.read_csv(dict[city], skiprows=[0], usecols=columns, delim_whitespace=True)
 
@@ -51,5 +50,5 @@ plt.rcParams["figure.autolayout"] = True
 plt.xlabel('Czas')
 plt.ylabel('Temperatura')
 plt.legend()
-plt.title('Średnia temperatura na dany dzień w roku')
+plt.title('Średnia temperatura na daną godzinię i dzień w roku.')
 plt.show()
